@@ -4,7 +4,8 @@
   "description": "Simple deck of cards manager.",
   "main": "index.js",
   "scripts": {
-    "build": "tsc"
+    "build": "tsc",
+    "watch": "tsc --watch"
   },
   "author": "",
   "license": "ISC",
