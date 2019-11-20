@@ -1,11 +1,11 @@
 import Card from '../../definitions/Card';
 
-export type Rank = 'A' | '2' | '3' | '4' | '5' | '6' | '7' | '8' | '9' | '10' | 'J' | 'Q' | 'K';
-export type Suit = 'Spades' | 'Hearts' | 'Clubs' | 'Diamonds';
-export type Color = 'red' | 'black';
+export const ranks = ['A', '2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K'] as const;
+export const suits = ['Spades', 'Hearts', 'Clubs', 'Diamonds'] as const;
 
-export const ranks: Rank[] = ['A', '2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K'];
-export const suits: Suit[] = ['Spades', 'Hearts', 'Clubs', 'Diamonds'];
+export type Rank = typeof ranks[number];
+export type Suit = typeof suits[number];
+export type Color = 'red' | 'black';
 
 class PlayingCard extends Card {
 	public suit: Suit;
