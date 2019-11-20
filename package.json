@@ -2,7 +2,7 @@
   "name": "cardz",
   "version": "1.0.0",
   "description": "Simple deck of cards manager.",
-  "main": "index.js",
+  "main": "dist/main.js",
   "scripts": {
     "build": "tsc",
     "watch": "tsc --watch"
