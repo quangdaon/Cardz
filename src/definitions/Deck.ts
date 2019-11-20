@@ -1,7 +1,7 @@
 import Card from './Card';
 
 class Deck {
-	private _cards: Card[] = [];
+	protected _cards: Card[] = [];
 
 	constructor() {
 		this.reset();
@@ -18,6 +18,11 @@ class Deck {
 		}
 
 		return amt === 1 ? this._cards.shift() : this._cards.splice(0, amt);
+	}
+
+	public add(card: Card): Deck {
+		this._cards.push(card);
+		return this;
 	}
 
 	public get cards(): Card[] {
