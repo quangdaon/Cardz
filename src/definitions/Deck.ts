@@ -1,5 +1,6 @@
 import Card from './Card';
 import shufflers, { ShuffleMethod } from '../helpers/shufflers';
+import { randomBetween, randomArrayIndex } from '../helpers/random';
 
 class Deck {
 	protected _cards: Card[] = [];
@@ -42,8 +43,29 @@ class Deck {
 		return this;
 	}
 
+	public cut(min: number = 1, max: number = this.length): Deck {
+		const places = randomBetween(min, max, 1);
+		for (let i = 0; i < places; i++) {
+			this._cards.unshift(this._cards.pop());
+		}
+
+		return this;
+	}
+
+	public pull(): Card {
+		const index = randomArrayIndex(this._cards);
+		const selected = this._cards[index];
+		this._cards.splice(index, 1);
+
+		return selected;
+	}
+
 	public get cards(): Card[] {
 		return this._cards;
+	}
+
+	public get length() {
+		return this._cards.length;
 	}
 }
 

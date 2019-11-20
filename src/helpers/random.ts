@@ -8,11 +8,11 @@ export function randomBetween(min: number, max: number, step?: number): number {
 	return base;
 }
 
-export function randomArrayIndex(arr: []): number {
+export function randomArrayIndex(arr: any[]): number {
 	return randomBetween(0, arr.length, 1);
 }
 
 export function randomInArray<T>(arr: T[]): T;
-export function randomInArray(arr: []): any {
+export function randomInArray(arr: any[]): any {
 	return arr[randomArrayIndex(arr)];
 }
