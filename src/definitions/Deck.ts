@@ -1,4 +1,5 @@
 import Card from './Card';
+import shufflers, { ShuffleMethod } from '../helpers/shufflers';
 
 class Deck {
 	protected _cards: Card[] = [];
@@ -22,6 +23,22 @@ class Deck {
 
 	public add(card: Card): Deck {
 		this._cards.push(card);
+		return this;
+	}
+
+	public shuffle(method: ShuffleMethod = 'default', options: any = {}) {
+		if (!(method in shufflers)) {
+			throw new Error('Invalid shuffling method.');
+		}
+
+		let amount: number = options.amount || 1;
+
+		const performShuffle = shufflers[method];
+
+		while (amount--) {
+			this._cards = performShuffle(this._cards, options);
+		}
+
 		return this;
 	}
 
