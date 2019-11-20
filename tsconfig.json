@@ -5,11 +5,7 @@
     "experimentalDecorators": true,
     "sourceMap": true,
     "outDir": "./dist/",
-    "moduleResolution": "node",
-    "baseUrl": ".",
-    "paths": {
-      "@/*": ["src/*"]
-    }
+    "moduleResolution": "node"
   },
   "include": [
     "src/**/*.ts"
