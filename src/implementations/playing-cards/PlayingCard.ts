@@ -13,7 +13,7 @@ class PlayingCard extends Card {
 	public rank: Rank;
 	public value: number;
 
-	constructor(suit, rank) {
+	constructor(suit: Suit, rank: Rank) {
 		super();
 
 		this.suit = suit;
