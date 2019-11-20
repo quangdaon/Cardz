@@ -1,3 +1,3 @@
-import Deck from './deck/Deck';
+import Deck from './definitions/Deck';
 
 export default Deck;
