@@ -12,6 +12,14 @@ class Deck {
 		return this;
 	}
 
+	public draw(amt: number = 1): Card | Card[] {
+		if (amt < 1) {
+			throw new Error('Draw amount must be a positive number.');
+		}
+
+		return amt === 1 ? this._cards.shift() : this._cards.splice(0, amt);
+	}
+
 	public get cards(): Card[] {
 		return this._cards;
 	}
