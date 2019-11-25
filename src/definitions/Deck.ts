@@ -1,6 +1,7 @@
 import Card from './Card';
+import { randomArrayIndex, randomBetween } from '../helpers/random';
 import shufflers, { ShuffleMethod } from '../helpers/shufflers';
-import { randomBetween, randomArrayIndex } from '../helpers/random';
+import sorters, { CompareFunction, GetFunction } from '../helpers/sorters';
 
 class Deck {
 	protected _cards: Card[] = [];
@@ -43,6 +44,20 @@ class Deck {
 		return this;
 	}
 
+	public sort(by: string | GetFunction | CompareFunction): this {
+		console.log(by);
+		console.log(by.length);
+		if (typeof by === 'string') {
+			this._cards = sorters.byProperty(this._cards, by);
+		} else if (by.length > 1) {
+			this._cards = sorters.byFunction(this._cards, by as CompareFunction);
+		} else {
+			this._cards = sorters.byGetter(this._cards, by as GetFunction);
+		}
+
+		return this;
+	}
+
 	public cut(min: number = 1, max: number = this.length): this {
 		const places = randomBetween(min, max, 1);
 		for (let i = 0; i < places; i++) {
@@ -61,7 +76,7 @@ class Deck {
 	}
 
 	public get cards(): Card[] {
-		return this._cards;
+		return [...this._cards];
 	}
 
 	public get length(): number {
