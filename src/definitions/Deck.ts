@@ -27,7 +27,7 @@ class Deck {
 		return this;
 	}
 
-	public shuffle(method: ShuffleMethod = 'default', options: any = {}) {
+	public shuffle(method: ShuffleMethod = 'default', options: any = {}): this {
 		if (!(method in shufflers)) {
 			throw new Error('Invalid shuffling method.');
 		}
@@ -43,7 +43,7 @@ class Deck {
 		return this;
 	}
 
-	public cut(min: number = 1, max: number = this.length): Deck {
+	public cut(min: number = 1, max: number = this.length): this {
 		const places = randomBetween(min, max, 1);
 		for (let i = 0; i < places; i++) {
 			this._cards.unshift(this._cards.pop());
@@ -64,7 +64,7 @@ class Deck {
 		return this._cards;
 	}
 
-	public get length() {
+	public get length(): number {
 		return this._cards.length;
 	}
 }
